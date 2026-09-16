@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Marca: rombos apilados">
+  <g fill="#ff4500">
+    <path opacity="0.10" d="M100 118 178 152 100 186 22 152z" />
+    <path opacity="0.22" d="M100 92 178 126 100 160 22 126z" />
+    <path opacity="0.38" d="M100 66 178 100 100 134 22 100z" />
+    <path opacity="0.62" d="M100 40 178 74 100 108 22 74z" />
+    <path d="M100 14 178 48 100 82 22 48z" />
+  </g>
+</svg>

@@ -1,0 +1,137 @@
+/* Escena de transición con scroll: el personaje emerge antes de "Sobre mí". */
+.portrait { height: 260vh; }
+
+.portrait__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: grid;
+  grid-template: 1fr / 1fr;
+  place-items: center;
+  overflow: hidden;
+  /* Fallback si el JS todavía no escribió las variables. */
+  --p: 0; --in: 0; --out: 0; --text: 0;
+}
+.portrait__stage > * { grid-area: 1 / 1; }
+
+/* Resplandor rojo que crece detrás de la figura */
+.portrait__halo {
+  width: min(120vh, 1100px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 69, 0, 0.3), rgba(255, 69, 0, 0.07) 52%, transparent 70%);
+  filter: blur(18px);
+  opacity: calc(var(--in) * 0.95 * (1 - var(--out)));
+  transform: translateY(calc((1 - var(--in)) * 8vh)) scale(calc(0.5 + var(--in) * 0.55));
+  will-change: transform, opacity;
+}
+
+/* Marcas flotando con parallax a distintas velocidades */
+.portrait__marks { width: 100%; height: 100%; position: relative; pointer-events: none; }
+.portrait__mark {
+  position: absolute;
+  width: clamp(56px, 8vw, 120px);
+  height: auto;
+  opacity: calc(var(--in) * 0.55 * (1 - var(--out)));
+  will-change: transform, opacity;
+}
+.portrait__mark--1 { left: 4%;  top: 16%;    transform: translateY(calc((0.5 - var(--p)) * 180px)) rotate(calc(var(--p) * -14deg)); }
+.portrait__mark--2 { right: 6%; top: 10%;    transform: translateY(calc((0.5 - var(--p)) * 300px)) rotate(calc(var(--p) * 20deg)); }
+.portrait__mark--3 { left: 9%;  bottom: 12%; transform: translateY(calc((0.5 - var(--p)) * -240px)) rotate(calc(var(--p) * 10deg)); }
+.portrait__mark--4 { right: 4%; bottom: 18%; transform: translateY(calc((0.5 - var(--p)) * -140px)) rotate(calc(var(--p) * -8deg)); }
+
+/* Figura */
+.portrait__figure { margin: 0; z-index: 2; }
+.portrait__img {
+  height: min(78vh, 680px);
+  width: auto;
+  object-fit: contain;
+  opacity: calc(var(--in) * (1 - var(--out)));
+  transform:
+    translateY(calc((1 - var(--in)) * 14vh - var(--out) * 12vh))
+    scale(calc(0.88 + var(--in) * 0.12 + var(--out) * 0.08));
+  filter:
+    brightness(calc(0.3 + var(--in) * 0.8))
+    contrast(calc(1.25 - var(--in) * 0.15))
+    blur(calc((1 - var(--in)) * 12px));
+  will-change: transform, opacity, filter;
+}
+
+/* Copy */
+.portrait__copy {
+  align-self: stretch;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+  padding: calc(var(--nav-h) + 32px) 0 72px;
+  opacity: calc(var(--text) * (1 - var(--out)));
+  transform: translateY(calc((1 - var(--text)) * 36px));
+  will-change: transform, opacity;
+}
+.portrait__copy .section-label { grid-row: 1; justify-self: start; margin: 0; color: var(--text-2); }
+.portrait__title {
+  grid-row: 2;
+  justify-self: center;
+  text-align: center;
+  font: 500 clamp(48px, 10vw, 148px) / 1 var(--font-sans);
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+  color: rgba(255, 255, 255, 0.82);
+}
+.portrait__word { display: inline-block; }
+.portrait__caption {
+  grid-row: 3;
+  justify-self: start;
+  max-width: 34ch;
+  font: 400 15px/1.5 var(--font-mono);
+  color: var(--text-2);
+}
+
+/* Pista de scroll */
+.portrait__hint {
+  align-self: end;
+  justify-self: end;
+  z-index: 3;
+  margin: 0 0 72px;
+  font: 400 12px/1 var(--font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  opacity: calc(1 - var(--in));
+}
+.portrait__hint::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  margin: 12px auto 0;
+  background: linear-gradient(var(--accent), transparent);
+}
+
+@media (max-width: 991px) {
+  .portrait { height: 220vh; }
+  .portrait__img { height: min(62vh, 520px); }
+  .portrait__caption { font-size: 14px; max-width: 28ch; }
+  .portrait__mark--1, .portrait__mark--3 { left: -2%; }
+  .portrait__mark--2, .portrait__mark--4 { right: -2%; }
+}
+@media (max-width: 767px) {
+  .portrait { height: 190vh; }
+  .portrait__img { height: min(52vh, 420px); }
+  .portrait__copy { padding-bottom: 56px; }
+  .portrait__mark { opacity: calc(var(--in) * 0.35 * (1 - var(--out))); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portrait { height: auto; }
+  .portrait__stage { position: static; height: auto; min-height: 90vh; padding: 60px 0; }
+  .portrait__halo, .portrait__mark, .portrait__img, .portrait__copy {
+    opacity: 1;
+    transform: none;
+  }
+  .portrait__halo { opacity: 0.8; }
+  .portrait__mark { opacity: 0.4; }
+  .portrait__img { filter: none; }
+  .portrait__hint { display: none; }
+}

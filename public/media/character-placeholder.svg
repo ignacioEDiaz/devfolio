@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 780" width="500" height="780" role="img" aria-label="Silueta con luz de contorno roja">
+  <defs>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="0.6">
+      <stop offset="0" stop-color="#ff2d00" stop-opacity="0.9" />
+      <stop offset="0.35" stop-color="#ff5a1f" stop-opacity="0.35" />
+      <stop offset="0.62" stop-color="#ff3d00" stop-opacity="0.15" />
+      <stop offset="1" stop-color="#ff7a3d" stop-opacity="0.95" />
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.32" r="0.55">
+      <stop offset="0" stop-color="#ff4500" stop-opacity="0.5" />
+      <stop offset="1" stop-color="#ff4500" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="body" x1="0.2" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#101010" />
+      <stop offset="0.55" stop-color="#070707" />
+      <stop offset="1" stop-color="#020202" />
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="16" />
+    </filter>
+    <path id="figure" d="M118 780c0-124 32-190 100-228-27-47-40-100-33-153-38-24-60-88-44-156C158 176 214 126 288 122c58-3 101 33 110 86 8 53-18 96-52 122-21 16-37 38-42 70-9 53 0 111 32 158 68 41 104 108 104 222Z" />
+  </defs>
+
+  <ellipse cx="270" cy="250" rx="230" ry="230" fill="url(#halo)" />
+  <use href="#figure" fill="#ff3d00" filter="url(#soft)" opacity="0.55" />
+  <use href="#figure" fill="url(#body)" />
+  <use href="#figure" fill="none" stroke="url(#rim)" stroke-width="7" />
+</svg>

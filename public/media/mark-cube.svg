@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Marca: cubo isométrico">
+  <defs>
+    <linearGradient id="cube-g" x1="0.1" y1="0" x2="0.85" y2="1">
+      <stop offset="0" stop-color="#fff1ea" />
+      <stop offset="0.28" stop-color="#ff9a63" />
+      <stop offset="0.7" stop-color="#ff5a1f" />
+      <stop offset="1" stop-color="#e02d00" />
+    </linearGradient>
+  </defs>
+  <g fill="url(#cube-g)">
+    <!-- Marco hexagonal (proyección isométrica del cubo) -->
+    <path fill-rule="evenodd" d="M100 12 176.2 56v88L100 188 23.8 144V56Zm0 42.2L60.4 77.1v45.8L100 145.8l39.6-22.9V77.1Z" />
+    <!-- Las tres aristas que nacen del vértice cercano -->
+    <path d="M96 12h8v42.2h-8z" />
+    <path d="M21.8 140.5 58.4 119.4l4 6.9-36.6 21.1z" />
+    <path d="M178.2 140.5 141.6 119.4l-4 6.9 36.6 21.1z" />
+  </g>
+</svg>

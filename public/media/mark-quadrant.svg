@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="Marca: círculo en cuadrantes">
+  <defs>
+    <radialGradient id="q-tl" cx="0" cy="0" r="1"><stop offset="0" stop-color="#fff4ef" /><stop offset="1" stop-color="#ff7a3d" /></radialGradient>
+    <radialGradient id="q-tr" cx="1" cy="0" r="1"><stop offset="0" stop-color="#ffd9c6" /><stop offset="1" stop-color="#ff5a1f" /></radialGradient>
+    <radialGradient id="q-br" cx="1" cy="1" r="1"><stop offset="0" stop-color="#ffb894" /><stop offset="1" stop-color="#ff4500" /></radialGradient>
+    <radialGradient id="q-bl" cx="0" cy="1" r="1"><stop offset="0" stop-color="#ffcdb5" /><stop offset="1" stop-color="#e83c00" /></radialGradient>
+  </defs>
+  <path fill="url(#q-tl)" d="M97 97V12A88 88 0 0 0 12 97Z" />
+  <path fill="url(#q-tr)" d="M103 97V12a88 88 0 0 1 85 85Z" />
+  <path fill="url(#q-br)" d="M103 103h85a88 88 0 0 1-85 85Z" />
+  <path fill="url(#q-bl)" d="M97 103H12a88 88 0 0 0 85 85Z" />
+</svg>

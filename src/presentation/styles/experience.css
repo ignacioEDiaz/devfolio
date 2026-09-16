@@ -1,0 +1,96 @@
+/* Historial laboral y formación */
+.exp { padding-top: 180px; }
+.exp__head { padding-bottom: 56px; }
+
+.exp__list { border-top: 1px solid var(--line); }
+.exp__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 0 32px;
+  align-items: start;
+  padding: 44px 0 40px;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.45s, opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+.exp__item:hover { background: var(--surface); }
+.exp__cross { left: 0; top: 0; }
+
+.exp__period {
+  font: 400 13px/1.4 var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0 0 20px;
+}
+/* Punto que marca el puesto actual */
+.exp__now {
+  width: 8px; height: 8px; flex: none;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: exp-pulse 2.4s ease-in-out infinite;
+}
+@keyframes exp-pulse {
+  50% { opacity: 0.25; transform: scale(0.7); }
+}
+
+.exp__role {
+  font: 500 clamp(22px, 2.2vw, 30px) / 1.2 var(--font-sans);
+  letter-spacing: -0.02em;
+}
+.exp__company {
+  margin-top: 6px;
+  font: 400 15px/1.4 var(--font-mono);
+  color: var(--accent);
+}
+.exp__bullets { margin-top: 20px; display: grid; gap: 10px; }
+.exp__bullets li {
+  position: relative;
+  padding-left: 22px;
+  font: 400 15px/1.55 var(--font-mono);
+  color: var(--text-2);
+  max-width: 68ch;
+}
+.exp__bullets li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0.62em;
+  width: 8px; height: 1px;
+  background: var(--line-strong);
+}
+.exp__item:hover .exp__bullets li::before { background: var(--accent); }
+
+/* Formación */
+.exp__edu {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 0 32px;
+  padding: 44px 0 0;
+}
+.exp__edu-key {
+  font: 400 13px/1.4 var(--font-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding-left: 20px;
+}
+.exp__edu-detail {
+  margin-top: 14px;
+  font: 400 15px/1.55 var(--font-mono);
+  color: var(--text-2);
+  max-width: 68ch;
+}
+
+@media (max-width: 991px) {
+  .exp { padding-top: 110px; }
+  .exp__head { padding-bottom: 36px; }
+  .exp__item, .exp__edu { grid-template-columns: 1fr; gap: 14px; }
+  .exp__period, .exp__edu-key { padding-left: 0; }
+  .exp__item { padding: 32px 0 30px; }
+}
+@media (max-width: 767px) {
+  .exp__bullets li, .exp__edu-detail { font-size: 14px; }
+}
